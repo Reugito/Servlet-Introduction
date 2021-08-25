@@ -33,9 +33,10 @@ public class LoginServlet extends HttpServlet {
 		String psw = request.getParameter("psw");
                
                 PrintWriter out = response.getWriter();
-                 boolean validateUser = Pattern.matches("[A-Z][a-z]{2,}",user);
-                
-		if(validateUser) {
+                boolean validateUser = Pattern.matches("[A-Z]*[a-z]{2,}",user);
+                boolean validatePsw = Pattern.matches("[A-Z]*[0-9]*[!@#$%&?][a-z]{2,}",psw);
+             
+		if(validateUser && validatePsw) {
 			request.setAttribute("user", user);
 			request.getRequestDispatcher("LoginSuccess.jsp").forward(request, response);
                        
