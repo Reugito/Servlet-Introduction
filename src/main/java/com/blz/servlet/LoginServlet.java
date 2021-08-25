@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
                
                 PrintWriter out = response.getWriter();
                 boolean validateUser = Pattern.matches("[A-Z]*[a-z]{2,}",user);
-                boolean validatePsw = Pattern.matches("[A-Z]*[0-9]*[!@#$%&?][a-z]{2,}",psw);
+                boolean validatePsw = Pattern.matches("[A-Z]*[0-9]*[!@#$%&?][a-z]*{8,}",psw);
              
 		if(validateUser && validatePsw) {
 			request.setAttribute("user", user);
